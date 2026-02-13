@@ -180,6 +180,32 @@
 #slide-7 .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: 0.5rem !important; }
 #slide-7 .w-7.h-7 { width: 1.4rem !important; height: 1.4rem !important; } /* чек */
 #slide-7 .text-sm { font-size: 0.9rem !important; }      /* підписи */
+    /* ===== HARD MOBILE FIT (does NOT affect desktop) ===== */
+@media (max-width: 640px){
+
+  /* менше місця під верхню навігацію тільки на моб */
+  :root{ --topNav: 68px !important; }
+
+  /* трохи менші внутрішні відступи слайду */
+  section.slide{
+    padding-top: calc(var(--topNav) + env(safe-area-inset-top)) !important;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom)) !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  /* КЛЮЧ: зменшуємо весь контент в кожному слайді */
+  section.slide > .relative.z-10{
+    transform: scale(0.92) !important;
+    transform-origin: top center !important;
+    width: 100% !important;
+  }
+
+  /* окремо hero трохи сильніше (там часто не влазить заголовок+статистика) */
+  #slide-0 > .relative.z-10{
+    transform: scale(0.90) !important;
+  }
+}
   </style>
 
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
